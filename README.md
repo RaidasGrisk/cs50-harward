@@ -6,6 +6,6 @@ This is where I store solved problem sets of cs50:
 3. [**Problem set 3.**](/PSet3) 
 4. [**Problem set 4.**](/PSet4) 
 5. [**Problem set 5.**](/PSet5) 
-6. [**Problem set 2.**](/PSet6) 
+6. [**Problem set 6.**](/PSet6) 
 
 Course website: https://cs50.harvard.edu/weeks
