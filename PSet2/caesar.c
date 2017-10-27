@@ -1,5 +1,5 @@
 /* CS50:          https://cs50.harvard.edu/weeks
-*  Problem set 1: https://docs.cs50.net/2017/fall/psets/2/pset2.html
+*  Problem set 2: https://docs.cs50.net/2017/fall/psets/2/pset2.html
 *  Problem 1:     https://docs.cs50.net/2017/fall/psets/2/caesar/caesar.html
 *
 * The code asks user to provide text and key. Returns Caesar ciphered text (https://en.wikipedia.org/wiki/Caesar_cipher)
