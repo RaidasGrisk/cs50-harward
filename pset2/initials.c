@@ -13,7 +13,7 @@
 int main(void)
 {
 
-    // promt user for full name
+    // prompt user for full name
     string name = get_string("");
 
     // print name's initials if previous char was not ' ' or \0 and this char is not ' '
