@@ -8,4 +8,4 @@ This is where I store solved problem sets of cs50:
 5. [**Problem set 5.**](/PSet5) 
 6. [**Problem set 6.**](/PSet6) 
 
-Course website: https://cs50.harvard.edu/weeks
+Course website: https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/
