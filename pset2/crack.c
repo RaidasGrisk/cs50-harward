@@ -2,9 +2,9 @@
 *  Problem set 2: https://docs.cs50.net/2017/x/psets/2/pset2.html
 *  Problem 4:     https://docs.cs50.net/problems/crack/crack.html
 *
-* The code cracks ten passwords using their hashes (cyphertext) using brute force. And prints it out.
-* This task is not implemented strictly as formulated on cs50 problem set. Cracking is the fun part.
-* This thread helped me big time: https://www.reddit.com/r/cs50/comments/5rkl6z/what_the_crack/
+* The code cracks ten passwords using their hashes (cyphertext) using brute force. And prints it out the result.
+* This task is not implemented strictly as formulated on cs50 problem set.
+* This post gave me valuable hints big time: https://www.reddit.com/r/cs50/comments/5rkl6z/what_the_crack/
 */
 
 #define _GNU_SOURCE
@@ -85,4 +85,3 @@ int main(void){
         printf("Hash: %s, pass: %s\n", hash[i], passwords[i]);
     }
 }
-
