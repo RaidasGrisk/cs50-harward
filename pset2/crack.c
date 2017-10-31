@@ -59,10 +59,10 @@ int main(void){
                         }
                     }
 
-                    // crypt generated guess and get hash
+                    // encrypt generated guess and get its hash
                     char* crypt_hash = crypt(plaintext_ready, "50");
 
-                    // check if hash == crypt_hash and save it if guess is correct
+                    // check if true hash == crypt_hash and save it if guess is correct
                     for (int hash_id = 0; hash_id < 10; hash_id++){
 
                         if (strcmp(crypt_hash, hash[hash_id]) == 0){
