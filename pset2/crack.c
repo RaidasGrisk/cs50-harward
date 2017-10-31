@@ -3,7 +3,7 @@
 *  Problem 4:     https://docs.cs50.net/problems/crack/crack.html
 *
 * The code cracks ten passwords using their hashes (cyphertext) using brute force. And prints it out.
-* This task is not implemented strictly as formulated on cs50 problem set.
+* This task is not implemented strictly as formulated on cs50 problem set. Cracking is the fun part.
 * This thread helped me big time: https://www.reddit.com/r/cs50/comments/5rkl6z/what_the_crack/
 */
 
@@ -60,7 +60,7 @@ int main(void){
                     }
 
                     // crypt generated guess and get hash
-                    char crypt_hash = crypt(plaintext_ready, "50");
+                    char* crypt_hash = crypt(plaintext_ready, "50");
 
                     // check if hash == crypt_hash and save it if guess is correct
                     for (int hash_id = 0; hash_id < 10; hash_id++){
@@ -72,7 +72,7 @@ int main(void){
 
                     // book-keeping
                     if (iteration % 100000 == 0){
-                        printf("progress: %f\n", (float)iteration / (float)set_size);
+                        printf("progress: %.2f\n", (float)iteration / (float)set_size);
                     }
                     iteration = iteration + 1;
                 }
