@@ -3,7 +3,7 @@
 *  Problem 4:     https://docs.cs50.net/problems/crack/crack.html
 *
 * The code cracks ten passwords using their hashes (cyphertext) using brute force. And prints it out.
-* This task is not implemented strictly as formulated on cs50 problem set. Cracking is the fun part.
+* This task is not implemented strictly as formulated on cs50 problem set.
 * This thread helped me big time: https://www.reddit.com/r/cs50/comments/5rkl6z/what_the_crack/
 */
 
@@ -84,6 +84,5 @@ int main(void){
     for (int i = 0; i < 10; i++){
         printf("Hash: %s, pass: %s\n", hash[i], passwords[i]);
     }
-
 }
 
