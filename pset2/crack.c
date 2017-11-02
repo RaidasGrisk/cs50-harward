@@ -4,7 +4,6 @@
 *
 * The code cracks ten passwords using their hashes (cyphertext) using brute force. And prints out the result.
 * This task is not implemented strictly as formulated on cs50 problem set.
-* This post gave me valuable hints big time: https://www.reddit.com/r/cs50/comments/5rkl6z/what_the_crack/
 */
 
 #define _GNU_SOURCE
@@ -12,76 +11,67 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <cs50.h>
 
-int main(void){
+int main(int argc, string argv[]){
 
-    // init dictionary of possible chracaters and known hashes table
+    // check if user provided a valid argument
+    if (argc != 2)
+    {
+        printf("Error: something is wrong with number of arguments.");
+        return 1;
+    }
+    else
+    {
+        printf("Please wait. The password will be printed out as soon as the program cracks it.\n");
+    }
+
+    // initiate hash and salt
+    string hash = argv[1];
+    char salt[3];
+    strncpy(salt, hash, 2);
+
+    // init dictionary of possible chracaters. Last char ' ' is used for less than 4 chars guesses trick.
     char dictionary[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
-    const char* hash[10];
-    hash[0] = "50.jPgLzVirkc";
-    hash[1] = "50YHuxoCN9Jkc";
-    hash[2] = "50QvlJWn2qJGE";
-    hash[3] = "50CPlMDLT06yY";
-    hash[4] = "50WUNAFdX/yjA";
-    hash[5] = "50fkUxYHbnXGw";
-    hash[6] = "50C6B0oz0HWzo";
-    hash[7] = "50nq4RV/NVU0I";
-    hash[8] = "50vtwu4ujL.Dk";
-    hash[9] = "50i2t3sOSAZtk";
-
-    // init empty array to store cracked passwords
-    char passwords[10][5];
 
     // initiate empty string with 4 chars to store guess
     char plaintext[5];
-    char plaintext_ready[5];
-
-    // int book keeping vars
-    int iteration = 0;
-    int set_size = pow(strlen(dictionary), 4);
 
     // generate a guess
-    for (int i1 = 0; i1 < strlen(dictionary); i1++){
+    for (int i1 = 0; i1 < strlen(dictionary); i1++)
+    {
         plaintext[0] = dictionary[i1];
-        for (int i2 = 0; i2 < strlen(dictionary); i2++){
+        for (int i2 = 0; i2 < strlen(dictionary); i2++)
+        {
             plaintext[1] = dictionary[i2];
-            for (int i3 = 0; i3 < strlen(dictionary); i3++){
+            for (int i3 = 0; i3 < strlen(dictionary); i3++)
+            {
                 plaintext[2] = dictionary[i3];
-                for (int i4 = 0; i4 < strlen(dictionary); i4++){
+                for (int i4 = 0; i4 < strlen(dictionary); i4++)
+                {
                     plaintext[3] = dictionary[i4];
 
-                    // remove empty space to generate plaintext with length less than 4
-                    // could not come up with a better solution to generate guesses with length less than 4
-                    strcpy(plaintext_ready, plaintext);
-                    for (int c = 0; c < strlen(plaintext_ready); c++){
-                        if (plaintext[c] == ' '){
-                            plaintext_ready[c] = 0;
+                    // a trick to generate guesses with length less than 4
+                    for (int c = 0; c < strlen(plaintext); c++)
+                    {
+                        if (plaintext[c] == ' ')
+                        {
+                            plaintext[c] = 0;
                         }
                     }
 
                     // encrypt generated guess and get its hash
-                    char* crypt_hash = crypt(plaintext_ready, "50");
+                    char* crypt_hash = crypt(plaintext, salt);
 
-                    // check if true hash == crypt_hash and save it if guess is correct
-                    for (int hash_id = 0; hash_id < 10; hash_id++){
-
-                        if (strcmp(crypt_hash, hash[hash_id]) == 0){
-                            strcpy(passwords[hash_id], plaintext_ready);
-                        }
+                    // check if guess is correct
+                    if (strcmp(crypt_hash, hash) == 0)
+                    {
+                        printf("Hash: %s, Pass: %s\n", hash, plaintext);
+                        return 0;
                     }
-
-                    // book-keeping
-                    if (iteration % 100000 == 0){
-                        printf("progress: %.2f\n", (float)iteration / (float)set_size);
-                    }
-                    iteration = iteration + 1;
                 }
             }
         }
     }
-
-    printf("\nDone. Here are the cracked passwords:\n");
-    for (int i = 0; i < 10; i++){
-        printf("Hash: %s, pass: %s\n", hash[i], passwords[i]);
-    }
 }
+
