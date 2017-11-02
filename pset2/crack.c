@@ -26,16 +26,12 @@ int main(int argc, string argv[]){
         printf("Please wait. The password will be printed out as soon as the program cracks it.\n");
     }
 
-    // initiate hash and salt
-    string hash = argv[1];
-    char salt[3];
-    strncpy(salt, hash, 2);
-
-    // init dictionary of possible chracaters. Last char ' ' is used for less than 4 chars guesses trick.
+    // initiate variables
     char dictionary[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
-
-    // initiate empty string with 4 chars to store guess
     char plaintext[5];
+    char salt[3];
+    string hash = argv[1];
+    strncpy(salt, hash, 2);
 
     // generate a guess
     for (int i1 = 0; i1 < strlen(dictionary); i1++)
@@ -51,7 +47,7 @@ int main(int argc, string argv[]){
                 {
                     plaintext[3] = dictionary[i4];
 
-                    // a trick to generate guesses with length less than 4
+                    // a trick to generate guesses with length less than 4: '/0' instead of ' '
                     for (int c = 0; c < strlen(plaintext); c++)
                     {
                         if (plaintext[c] == ' ')
