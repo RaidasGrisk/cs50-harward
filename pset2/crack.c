@@ -57,7 +57,7 @@ int main(int argc, string argv[]){
                     }
 
                     // encrypt generated guess and get its hash
-                    char* crypt_hash = crypt(plaintext, salt);
+                    string crypt_hash = crypt(plaintext, salt);
 
                     // check if guess is correct
                     if (strcmp(crypt_hash, hash) == 0)
