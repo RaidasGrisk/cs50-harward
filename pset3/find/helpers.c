@@ -1,3 +1,15 @@
+/* CS50:          https://cs50.harvard.edu/weeks
+*  Problem set 3: https://docs.cs50.net/2017/x/psets/3/pset3.html
+*  Problem 1:     https://docs.cs50.net/problems/find/less/find.html
+*
+*  The code implements:
+*  binary_search
+*  counting_sort
+*  selection_sort
+*  bubble_sort
+*/
+
+
 /**
  * helpers.c
  *
