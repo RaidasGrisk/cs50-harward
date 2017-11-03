@@ -2,8 +2,7 @@
 *  Problem set 2: https://docs.cs50.net/2017/x/psets/2/pset2.html
 *  Problem 4:     https://docs.cs50.net/problems/crack/crack.html
 *
-* The code cracks ten passwords using their hashes (cyphertext) using brute force. And prints out the result.
-* This task is not implemented strictly as formulated on cs50 problem set.
+* The code cracks passwords using crypt() hashes (cyphertext) using brute force. Once its done it prints out the result.
 */
 
 #define _GNU_SOURCE
@@ -11,9 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <cs50.h>
 
-int main(int argc, string argv[]){
+int main(int argc, char *argv[]){
 
     // check if user provided a valid argument
     if (argc != 2)
@@ -30,7 +28,7 @@ int main(int argc, string argv[]){
     char dictionary[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
     char plaintext[5];
     char salt[3];
-    string hash = argv[1];
+    char *hash = argv[1];
     strncpy(salt, hash, 2);
 
     // generate a guess
@@ -57,7 +55,7 @@ int main(int argc, string argv[]){
                     }
 
                     // encrypt generated guess and get its hash
-                    string crypt_hash = crypt(plaintext, salt);
+                    char *crypt_hash = crypt(plaintext, salt);
 
                     // check if guess is correct
                     if (strcmp(crypt_hash, hash) == 0)
@@ -70,4 +68,3 @@ int main(int argc, string argv[]){
         }
     }
 }
-
