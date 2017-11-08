@@ -15,7 +15,7 @@
 #include <stdbool.h>
 #include "dictionary.h"
 
-// initiate variables
+// initiate global variables
 bool loaded = false;
 int word_count = 0;
 const int hashtable_size = 25000;
@@ -43,7 +43,7 @@ int hash(const char *word)
     //     hash_id = word[i] + (hash_id << 6) + (hash_id << 16) - hash_id;
 
     // https://www.reddit.com/r/cs50/comments/1x6vc8/pset6_trie_vs_hashtable/cf9nlkn/
-    // this one seems to be the fastest
+    // this one seems to preoduce the fastest result
     unsigned int hash_id = 0;
     unsigned int len = strlen(word);
     for (int i = 0; i < len; i++)
@@ -53,7 +53,7 @@ int hash(const char *word)
 }
 
 // initiate hashtable
-node *hashtable[hashtable_size];
+node *hashtable[hashtable_size] = {NULL};
 
 
 /**
@@ -100,12 +100,6 @@ bool load(const char *dictionary)
 
     // placeholder for word
     char word[LENGTH+1];
-
-    // clear the hastable
-    for (int i = 0; i <= hashtable_size; i++)
-        {
-            hashtable[i] = NULL;
-        }
 
     // open dictionary
     FILE *dict = fopen(dictionary, "r");
@@ -177,13 +171,15 @@ unsigned int size(void)
  */
 bool unload(void)
 {
+
+    // loop though all hashtable nodes and free current node
     for (int i = 0; i <= hashtable_size; i++)
     {
         node* cursor = hashtable[i];
         while (cursor != NULL)
         {
             node *temp = cursor;
-            cursor = cursor -> next;
+            cursor = cursor->next;
             free(temp);
         }
     }
