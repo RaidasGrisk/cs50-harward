@@ -43,7 +43,7 @@ int hash(const char *word)
     //     hash_id = word[i] + (hash_id << 6) + (hash_id << 16) - hash_id;
 
     // https://www.reddit.com/r/cs50/comments/1x6vc8/pset6_trie_vs_hashtable/cf9nlkn/
-    // this one seems to preoduce the fastest result
+    // this one seems to produce the fastest result
     unsigned int hash_id = 0;
     unsigned int len = strlen(word);
     for (int i = 0; i < len; i++)
@@ -128,14 +128,14 @@ bool load(const char *dictionary)
         // get hash key
         int hash_id = hash(new_node->word);
 
-        // make new hash entry if it does not exist, and work out pointers
+        // make new node if hash_id is empty, and work out pointers
         if (hashtable[hash_id] == NULL)
         {
             hashtable[hash_id] = new_node;
             new_node->next = NULL;
         }
 
-        // if it exist, add new and work out pointers
+        // if node is already there at hash_id, add new node and work out pointers
         else
         {
             new_node->next = hashtable[hash_id];
@@ -156,6 +156,7 @@ bool load(const char *dictionary)
  */
 unsigned int size(void)
 {
+    // use global variables updated in load()
     if (loaded)
     {
         return word_count;
