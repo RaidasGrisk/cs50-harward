@@ -1,0 +1,22 @@
+0.  Longest word in the english language and the limit size of a single word in our dictionary.
+
+1.  The function returns usage statistics for a called process.
+
+2.  16 variables.
+
+3.  To be able to use these same structs again and again withought the need to create new ones.
+
+4.  First of, a pointer pointing to the first character of a text is created. 
+    The loop then iterates
+ over each character cheking if it is indeed a character (or '), not a number, other object or EOF.
+ 
+    If it is a valid character it is appended to the currect word. If current word is longer than the
+ 
+    maximum length specified (45 chars) or contains numeric characters, this word is ignored and not spellchecked.
+ 
+    If '\0' is encountered, the word is finished and is spellchecked. The process repeats by forming a new
+ 
+    word and then spellcheking it.
+
+5.  The program would not check if it is a valid word (i.e. not containing any digits or other weird chars).
+6.  TODO
