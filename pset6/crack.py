@@ -31,3 +31,4 @@ for i in range(1, 5):
 
 # if cound not find a match
 print('No result')
+exit(1)
