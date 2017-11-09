@@ -6,7 +6,7 @@ This is where I store solved problem sets of cs50 (cloned workspace of cs50 IDE)
 3. [**Problem set 3.**](/pset3) Sorting algoritms and Game of Fifteen.
 4. [**Problem set 4.**](/pset4) Forensics.
 5. [**Problem set 5.**](/pset5) Speller.
-6. [**Problem set 6.**](/pset6) 
+6. [**Problem set 6.**](/pset6) Twitter sentiment analysis (and reimplementation of previous tasks in py)
 7. [**Problem set 7.**](/pset7) 
 
 Course website: https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/
