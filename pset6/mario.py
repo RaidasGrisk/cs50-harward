@@ -15,9 +15,6 @@ while True:
     else:
         break
 
-# print the pyramid
+# print the pyramid (semi-readable one liner)
 for row in range(height+1):
-    print(' ' * (height - row), end='')
-    print('#' * row, end='')
-    print('  ', end='')
-    print('#' * row)
+    print(' ' * (height - row) + '#' * row + '  ' + '#' * row)
