@@ -3,7 +3,7 @@ CS50:          https://cs50.harvard.edu/weeks
 Problem set 6: https://docs.cs50.net/2017/x/psets/6/pset6.html
 Problem 4:     https://docs.cs50.net/problems/crack/crack.html
 
-The code cracks passwords using crypt() hashes (cyphertext) using brute force. Once its done it prints out the result.
+The code cracks passwords using crypt() hashes (cyphertext) using brute force.
 """
 
 import crypt
