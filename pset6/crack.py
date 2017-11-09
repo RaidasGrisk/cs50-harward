@@ -7,7 +7,6 @@ The code cracks passwords using crypt() hashes (cyphertext) using brute force. O
 """
 
 import crypt
-import itertools
 from itertools import permutations
 
 # prompt for hash
@@ -24,7 +23,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 # iterate over each possible comination when i defines length of a word
 for i in range(1, 5):
-    for word in [''.join(x) for x in itertools.permutations(alphabet, i)]:
+    for word in [''.join(x) for x in permutations(alphabet, i)]:
         if crypt.crypt(word=word, salt=hash[0:2]) == hash:
             print('Pass: {}'.format(word))
             exit(0)
