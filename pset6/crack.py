@@ -23,11 +23,11 @@ alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 # iterate over each possible comination when i defines length of a word
 for i in range(1, 5):
-    for word in [''.join(x) for x in permutations(alphabet, i)]:
+    for word in [''.join(char) for char in permutations(alphabet, i)]:
         if crypt.crypt(word=word, salt=hash[0:2]) == hash:
             print('Pass: {}'.format(word))
             exit(0)
 
 # if cound not find a match
 print('No result')
-exit(1)
+exit(0)
