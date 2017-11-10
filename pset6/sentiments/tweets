@@ -1,0 +1,46 @@
+"""
+CS50:          https://cs50.harvard.edu/weeks
+Problem set 6: https://docs.cs50.net/2017/x/psets/6/pset6.html
+Problem 5:     https://docs.cs50.net/problems/sentiments/sentiments.html
+
+This program prompts for twitter account name and prints out user's last 50 tweets categorized as positive/negative/neutral.
+"""
+
+
+#!/usr/bin/env python3
+
+import sys
+import os
+import helpers
+import analyzer
+from termcolor import colored
+
+def main():
+
+    # ensure proper usage
+    if len(sys.argv) != 2:
+        sys.exit("Usage: ./tweets @cs50")
+
+    # absolute paths to lists
+    positives = os.path.join(sys.path[0], "positive-words.txt")
+    negatives = os.path.join(sys.path[0], "negative-words.txt")
+
+    # create analyzer
+    tweet_analizer = analyzer.Analyzer(positives, negatives)
+
+    # get last 50 tweets
+    tweets = helpers.get_user_timeline(sys.argv[1], count=50)
+
+    # analyze each tweet's sentiment and print
+    for tweet in tweets:
+        sentiment = tweet_analizer.analyze(tweet)
+
+        if sentiment < 0:
+            print(colored(tweet, 'red'))
+        elif sentiment > 0:
+            print(colored(tweet, 'green'))
+        else:
+           print(colored(tweet, 'yellow'))
+
+if __name__ == '__main__':
+    main()
