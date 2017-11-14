@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+<p></p><b> Transaction history </b></p> <br>
+
+<table class="table table-hover" style="width:100%">
+    <tr>
+        <th> Quote </th>
+        <th> Shares </th>
+        <th> Price </th>
+        <th> Order type </th>
+    </tr>
+
+    {% for item in user_dict %}
+    <tr>
+        <td> {{item['quote']}} </td>
+        <td> {{item['shares']}} </td>
+        <td> {{item['price']}} </td>
+        <td> {% if item['buy_or_sell'] == 1 %} Buy {% else %} Sell {% endif %} </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

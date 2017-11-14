@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+<p></p><b> Balance </b></p> <br>
+
+<table class="table table-hover" style="width:100%">
+    <tr>
+        <th> </th>
+        <th> Shares </th>
+        <th> Price </th>
+        <th> Total </th>
+    </tr>
+
+    {% for item in user_dict %}
+    <tr>
+        <td> {{item['quote']}} </td>
+        <td> {{item['shares']}} </td>
+        <td> {{item['price']}} </td>
+        <td> {{item['value']}} </td>
+    </tr>
+    {% endfor %}
+
+    <tr>
+        <td> Cash </td>
+        <td>  </td>
+        <td>  </td>
+        <td> {{cash_balance}} </td>
+    </tr>
+
+
+    <tr>
+        <td> Total portfolio value: </td>
+        <td>  </td>
+        <td>  </td>
+        <td> {{total_value}} </td>
+    </tr>
+
+</table>
+
+{% endblock %}
+
+
+
+
+    <!--<form action="{{ url_for('index') }}" method="post">-->
+    <!--    <fieldset>-->
+    <!--        <div class="form-group">-->
+    <!--            <p>-->
+    <!--                <p> Quote, Number of shares, Price of single share, Total value of shares </p>-->
+    <!--                {% for item in user_dict %}-->
+    <!--                    <p> {{item['quote']}}, {{item['shares']}}, {{item['price']}}, {{item['value']}} </p>-->
+    <!--                {% endfor %}-->
+    <!--                <p> cash balance: {{cash_balance}} </p>-->
+    <!--                <p> total portfolio value: {{total_value}} </p>-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <!--    </fieldset>-->
+    <!--</form>-->
