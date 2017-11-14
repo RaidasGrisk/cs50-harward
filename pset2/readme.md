@@ -1,4 +1,5 @@
 Week's main topics:
 
-1. Computational complexity (big O notation)
-2. Algorithms (bubble sort, selection sort, insertion sort, merge sort, linear search, binary search)
+1. Vairables, loops, conditional statements, etc.
+2. Array
+3. C langauge (ceasar, vigenere cyphers and brute-force cracking passwords)
