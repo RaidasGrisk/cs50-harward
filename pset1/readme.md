@@ -1,3 +1,3 @@
-Week's main topic:
+Week's focus:
 
 1. Getting to know C
