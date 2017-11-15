@@ -1,4 +1,4 @@
-Week's main topics:
+Week's focus:
 
 1. Vairables, loops, conditional statements, etc.
 2. Array
