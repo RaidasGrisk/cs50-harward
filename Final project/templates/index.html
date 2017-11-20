@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Twisent</title>
+    <meta charset="utf-8"/>
+    <meta content="initial-scale=1, width=device-width" name="viewport"/>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="header">
+    </div>
+    <div class="Intro-text">
+      <p>Place where you can make your own twitter sentiment analysis.</p>
+    </div>
+    <form action="{{ url_for('sample') }}" class="form" method="get">
+        <label class="sr-only" for="user_list">user_list</label>
+        <input class="form-control" name="user_list", placeholder="Twitter account of your choice"/>
+      <div class="submit-button">
+        <button class="btn btn-default" type="submit">Analyze</button>
+      </div>
+    </form>
+  </body>
+</html>
