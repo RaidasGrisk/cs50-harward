@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, jsonify
-from helpers import check_users_list, get_tweets, clean_tweets, get_sentiment, parse_all_data, get_chart
+from helpers import check_users_list, get_tweets, clean_tweets, get_sentiment, parse_all_data, get_charts
 
 
 # initiate app
@@ -40,6 +40,16 @@ def sample():
     tweets_data_sentiment = parse_all_data(tweets_data, tweets_sentiment)
 
     # create new list to iterate over with zip
-    chart = get_chart(tweets_data_sentiment)
+    chart1, chart2 = get_charts(tweets_data_sentiment)
 
-    return render_template('sample.html', chart=chart)
+    return render_template('sample.html', chart1=chart1, chart2=chart2)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/api_doc')
+def api_doc():
+    return render_template('api_doc.html')
