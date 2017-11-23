@@ -9,5 +9,6 @@ This is where I store solved problem sets of cs50 (cloned workspace of cs50 IDE)
 6. [**Problem set 6:**](/pset6) Sentimental.
 7. [**Problem set 7:**](/pset7) C$50-finance.
 8. [**Problem set 8:**](/pset8) Mashup.
+9. [**Final Project:**](/pset8) Website for twitter sentiment analysis using openAI's sentiment neuron.
 
 Course website: https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/
