@@ -1,25 +1,23 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html>
-  <head>
-    <title>Twisent</title>
-    <meta charset="utf-8"/>
-    <meta content="initial-scale=1, width=device-width" name="viewport"/>
-    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <div class="header">
-    </div>
-    <div class="Intro-text">
-      <p>Place where you can make your own twitter sentiment analysis.</p>
-    </div>
-    <form action="{{ url_for('sample') }}" class="form" method="get">
-        <label class="sr-only" for="user_list">user_list</label>
-        <input class="form-control" name="user_list", placeholder="Twitter account of your choice"/>
-      <div class="submit-button">
-        <button class="btn btn-default" type="submit">Analyze</button>
-      </div>
-    </form>
-  </body>
-</html>
+{% block main %}
+<!-- Intro text -->
+<div class="Intro-text">
+  <p><b>This is a place where you can make your own twitter sentiment analysis</b><br><br>
+     Try it out by entering a few twitter acounts in the box below. I'll analyze 20 last tweets for each user.
+     Be patient, for it tikes quite a time to analyze each tweet!</p>
+</div>
+
+<!-- Page contents -->
+<!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
+<form action="{{ url_for('sample') }}" class="form" method="get">
+    <label class="sr-only" for="user_list">user_list</label>
+    <input class="form-control" name="user_list", placeholder="Enter twitter accounts of your choice. Example: barackoabama;JustinTrudeu;RealDonaldTrump", rows="2"/>
+  <div class="submit-button">
+    <button class="btn btn-default" type="submit">Analyze</button>
+  </div>
+</form>
+
+</body>
+
+{% endblock %}

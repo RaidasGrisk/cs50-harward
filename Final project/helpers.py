@@ -31,13 +31,8 @@ def check_users_list(user_list):
     return True
 
 
-def get_tweets(user_list, count=5):
+def get_tweets(user_list, count=20):
     """Get users tweets and return structured dictionary"""
-
-    """
-    check tweet_mode for full tweets
-
-    """
 
     # empty dictionary to store data
     data = {}
@@ -138,9 +133,9 @@ def get_time_series_data(tweets_data, granularity=1):
     return tweets_data_ordered
 
 
-def get_chart(tweets_data_sentiment):
+def get_charts(tweets_data_sentiment):
 
-    """Form a sample chart including sentiment, likes (and shares).
+    """Form a sample charts of sentiment.
     Not a time-series. Used for sample plot only"""
 
     # create new list to iterate over with zip
@@ -159,11 +154,36 @@ def get_chart(tweets_data_sentiment):
                 sentiment.append(element)
             c += 1
 
+    # get first chart
     # estimate sentiment
     sentiment_values = np.sum(sentiment * (likes / np.sum(likes, axis=1, keepdims=True)), axis=1)
     likes = np.sum(likes, axis=1)
 
-    # create chart
-    chart = [go.Scatter(x=[i for i in range(len(likes))], y=sentiment_values)]
+    # generate chart object
+    chart1 = [go.Scatter(x=[i for i in range(len(likes))], y=sentiment_values)]
 
-    return plotly.offline.plot(chart, output_type='div', show_link=False, link_text=False)
+    # get second chart
+    # list of tuples to list of lists
+    charts = [[] for _ in range(len(sentiment[0]))]
+    for user in range(len(sentiment[0])):
+        for data_point in range(len(sentiment)):
+            charts[user].append(sentiment[data_point][user])
+
+    # create char objects
+    chart2 = []
+    for ts in charts:
+        chart2.append(go.Scatter(x=[i for i in range(len(likes))], y=ts))
+
+    return plotly.offline.plot(chart1, output_type='div', show_link=False, link_text=False), \
+           plotly.offline.plot(chart2, output_type='div', show_link=False, link_text=False)
+
+#
+#
+# user_list = ['RealDonaldTrump', 'barackobama']
+# tweets_data = get_tweets(user_list, count=5)
+# tweets_data = clean_tweets(tweets_data)
+# tweets_sentiment = get_sentiment(tweets_data)
+# tweets_data = parse_all_data(tweets_data, tweets_sentiment)
+# get_time_series_data(tweets_data, granularity=1)
+#
+# tweets_data_sentiment = tweets_data

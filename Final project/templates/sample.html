@@ -1,14 +1,37 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html>
-  <head>
-    <title>Twisent</title>
-    <meta charset="utf-8"/>
-    <meta content="initial-scale=1, width=device-width" name="viewport"/>
-    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-  </head>
-  <body>
-    {{ chart | safe}}
-  </body>
-</html>
+{% block main %}
+<!-- Intro text -->
+<div class="Intro-text">
+  <p><b>This is a place where you can make your own twitter sentiment analysis</b><br><br>
+     Try it out by entering a few twitter acounts in the box below. I'll analyze 20 last tweets for each user.
+     Be patient, for it tikes quite a time to analyze each tweet!</p>
+</div>
+
+<!-- Page contents -->
+<!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
+<form action="{{ url_for('sample') }}" class="form" method="get">
+    <label class="sr-only" for="user_list">user_list</label>
+    <input class="form-control" name="user_list", placeholder="Enter twitter accounts of your choice. Example: barackoabama;JustinTrudeu;RealDonaldTrump", rows="2"/>
+  <div class="submit-button">
+    <button class="btn btn-default" type="submit">Analyze</button>
+  </div>
+</form>
+
+<!-- Chart box -->
+<!-- /*https://www.w3schools.com/howto/howto_css_two_columns.asp*/ -->
+<div class="Sample_charts">
+  <div class="Chart_box_container">
+    <div class="column">  {{chart1 | safe}} </div>
+    <div class="column"> {{chart2 | safe}} </div>
+  </div>
+</div>
+
+<div class="Sample_charts">
+  <div class="Chart_box_container">
+    <div class="column"> This chart displays a combined sentiment of all the users. To get the final sentiment value, each tweet's sentiment is weighted by its likes and shares. </div>
+    <div class="column"> This chart compares sentiment values of each user. These are just raw values of each tweet's sentiment. </div>
+  </div>
+</div>
+
+{% endblock %}
