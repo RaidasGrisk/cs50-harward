@@ -4,15 +4,32 @@
 
 <!-- Intro text -->
 <div class="Intro-text">
-  <p><b>API documentation</b></p>
+  <p><b>API documentation</b></p><br>
 </div>
 
-
-<div class="Sample_charts">
-  <div class="Chart_box_container">
-    <div class="column"> Parameter</div>
-    <div class="column"> Explanation </div>
-  </div>
-</div>
+<!-- Parameters table -->
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>users_list</td>
+    <td>Twitter user names separated by ';'. No need to add twitter's '@'. There is no cap to user count.</td>
+  </tr>
+  <tr>
+    <td>TS</td>
+    <td>TS stands for time-series. Parameter can take values 0 or 1. If 0 returns not a time-series object. If 1 returns time-series object.
+      For now, it automatically returns hourly data. No other functionalities are present.</td>
+  </tr>
+  <tr>
+    <td>Count</td>
+    <td>Number of tweets to retrieve from each user. Maximum value of parameter is 200.</td>
+  </tr>
+  <tr>
+    <td>An example</td>
+    <td>http://.../api?user_list=barackobama;RealDonaldTrump&count=50&TS=1</td>
+  </tr>
+</table>
 
 {% endblock %}

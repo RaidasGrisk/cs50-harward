@@ -31,7 +31,7 @@ def check_users_list(user_list):
     return True
 
 
-def get_tweets(user_list, count=20):
+def get_tweets(user_list, count):
     """Get users tweets and return structured dictionary"""
 
     # empty dictionary to store data
@@ -97,7 +97,7 @@ def parse_all_data(tweets_data, tweets_sentiment):
     return tweets_data
 
 
-def get_time_series_data(tweets_data, granularity=1):
+def get_time_series_data(tweets_data):
     """Form time-series data"""
 
     last_time, first_time = datetime(2000, 1, 1, 1, 1, 1), datetime(2100, 1, 1, 1, 1, 1)
@@ -140,8 +140,10 @@ def get_charts(tweets_data_sentiment):
 
     # create new list to iterate over with zip
     tweets_data_sentiment_for_chart = []
+    user_names = []
     for user in tweets_data_sentiment:
         tweets_data_sentiment_for_chart.append(tweets_data_sentiment['{}'.format(user)])
+        user_names.append(user)
 
     # save likes and sentiment data
     likes, sentiment = [], []
@@ -171,19 +173,16 @@ def get_charts(tweets_data_sentiment):
 
     # create char objects
     chart2 = []
-    for ts in charts:
-        chart2.append(go.Scatter(x=[i for i in range(len(likes))], y=ts))
+    for ts, name in zip(charts, user_names):
+        chart2.append(go.Scatter(x=[i for i in range(len(likes))], y=ts, name=name))
 
     return plotly.offline.plot(chart1, output_type='div', show_link=False, link_text=False), \
            plotly.offline.plot(chart2, output_type='div', show_link=False, link_text=False)
 
-#
-#
-# user_list = ['RealDonaldTrump', 'barackobama']
+
+# user_list = ['RealDonaldTrump', 'barackobama', 'RaidasG', '20committee', 'JustinTrudeau']
 # tweets_data = get_tweets(user_list, count=5)
 # tweets_data = clean_tweets(tweets_data)
 # tweets_sentiment = get_sentiment(tweets_data)
-# tweets_data = parse_all_data(tweets_data, tweets_sentiment)
-# get_time_series_data(tweets_data, granularity=1)
-#
-# tweets_data_sentiment = tweets_data
+# tweets_data_sentiment = parse_all_data(tweets_data, tweets_sentiment)
+# time_series_data = get_time_series_data(tweets_data_sentiment)

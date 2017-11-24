@@ -1,4 +1,4 @@
-/*Basic layout*/
+/*Index*/
 
 .Intro-text {
       text-align: center;
@@ -18,6 +18,57 @@
       text-align: center;
       padding: 25px;
 }
+
+/*API documentation*/
+table {
+    border-collapse: collapse;
+    width: 50%;
+    justify-content: center;
+    margin: auto;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    width: 50%;
+}
+
+tr:hover {
+  background-color:#C42847;
+  color: white;
+}
+
+/*About*/
+.About_table{
+      justify-content: center;
+      width: 50%;
+      margin: auto;
+}
+
+
+/*Sample chart box*/
+/*https://www.w3schools.com/howto/howto_css_two_columns.asp*/
+
+.Sample_charts{
+      justify-content: center;
+      width: 70%;
+      margin: auto;
+}
+
+.column {
+      float: left;
+      width: 50%;
+      padding-right: 20px;
+}
+
+/* Clear floats after the columns */
+.Chart_box_container:after {
+      content: "";
+      display: table;
+      clear: both;
+}
+
 
 /*Colours and full css*/
 /*https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3*/
@@ -95,26 +146,4 @@
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
       color: #FFFFFF !important;
     }
-}
-
-/*Sample char box*/
-/*https://www.w3schools.com/howto/howto_css_two_columns.asp*/
-
-.Sample_charts{
-      justify-content: center;
-      width: 50%;
-      margin: auto;
-}
-
-.column {
-      float: left;
-      width: 50%;
-      padding-right: 20px;
-}
-
-/* Clear floats after the columns */
-.Chart_box_container:after {
-      content: "";
-      display: table;
-      clear: both;
 }
